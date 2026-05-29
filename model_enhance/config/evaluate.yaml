@@ -1,0 +1,44 @@
+# ApSense 评估配置
+# 使用方式: cd model && python evaluate.py
+
+dataset: mesa
+model: DSepST15Net_no_branch
+
+# 实验标签：必须与训练时的 exp_tag 一致
+exp_tag: delay0_win60_soft0
+
+# 数据集路径
+dataset_dir: C:/Users/薛卜元/Desktop/毕业设计/Code/ApSense-main/MESA_enhance/delay0_win60_soft0
+# dataset_dir: /root/autodl-tmp/ApSense-main/MESA_enhance/delay0_win60_soft0
+
+# 模型权重和日志目录（与训练时一致）
+log_dir: C:/Users/薛卜元/Desktop/毕业设计/Code/ApSense-main/model_enhance/logs
+# log_dir: /root/autodl-tmp/ApSense-main/model_enhance/logs
+weight_dir: C:/Users/薛卜元/Desktop/毕业设计/Code/ApSense-main/model_enhance/weights
+# weight_dir: /root/autodl-tmp/ApSense-main/model_enhance/weights
+
+# GPU 设置
+gpu: "0"
+
+# 评估折次
+num_folds: 5
+
+# 特征选择（与训练时一致）
+features: null
+
+# 评估模式：onset=逐秒事件检测，severity=AHI严重程度分类
+mode: onset
+
+# 是否加载已保存的预测结果（null表示重新推理）
+save_pred: null
+
+# 禁用Hydra自动改变工作目录
+hydra:
+  run:
+    dir: .
+  output_subdir: null
+  job_logging:
+    root:
+      handlers: [console]
+  # hydra_logging:
+    # disable_existing_loggers: true

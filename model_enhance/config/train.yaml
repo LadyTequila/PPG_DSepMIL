@@ -1,0 +1,44 @@
+# ApSense 训练配置
+
+dataset: mesa
+model: DSepST15Net_no_branch # MESA最优配置：M=4, VDO√, BCNN×（Table II）
+
+# 实验标签：与 MESA_enhance/ 下的子目录名一致，例如 delay0_win60_soft0
+# 会自动作为 logs/ 和 weights/ 的子目录名，以及 train.log 的后缀
+exp_tag: delay0_win60_soft0
+
+# 数据集路径（预处理后的pickle文件目录，与 exp_tag 对应）
+dataset_dir: C:/Users/薛卜元/Desktop/毕业设计/Code/ApSense-main/MESA_enhance/delay0_win60_soft0
+# dataset_dir: /root/autodl-tmp/ApSense-main/MESA_enhance/delay0_win60_soft0
+# 输出根目录（子目录由 exp_tag 自动创建）
+log_dir: C:/Users/薛卜元/Desktop/毕业设计/Code/ApSense-main/model_enhance/logs
+# log_dir: /root/autodl-tmp/ApSense-main/model_enhance/logs
+weight_dir: C:/Users/薛卜元/Desktop/毕业设计/Code/ApSense-main/model_enhance/weights
+# weight_dir: /root/autodl-tmp/ApSense-main/model_enhance/weights
+
+# GPU 设置（"0" 表示第一块 GPU，null 表示不指定）
+gpu: "0"
+
+# 训练折次控制
+num_folds: 5       # 总共跑几折
+starting_fold: 0   # 从第几折开始（断点续训时修改这里）
+
+# 特征选择（null 表示使用全部 7 个特征；或指定子集，如 [pwa, ppi, dppi]）
+features: null
+
+# 是否对多数类进行随机下采样
+subsampling: false
+
+# 是否显示警告信息
+warning: false
+
+# 禁用Hydra自动改变工作目录
+hydra:
+  run:
+    dir: .
+  output_subdir: null
+  job_logging:
+    root:
+      handlers: [console]
+  # hydra_logging:
+    # disable_existing_loggers: true

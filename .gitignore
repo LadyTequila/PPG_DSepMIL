@@ -1,0 +1,29 @@
+# === 数据与训练产物 ===
+
+# MESA 原始 EDF 转换出的 npz 与 XML 标注
+shared_subset/mesa_quality7_*/
+
+# 三轮预处理的 pickle 产物
+MESA/
+MESA_v2/
+MESA_enhance/
+
+# 第一轮训练的日志和权重
+model_enhance/logs/
+model_enhance/weights/
+
+# 最终训练的日志和权重
+model_v2/logs/
+model_v2/weights/
+
+# 机器学习路径的输出
+ML_results/
+
+# 各类二进制中间产物
+*.pickle
+*.npz
+*.pt
+*.h5
+
+# 论文草稿
+paper_scratch.md
